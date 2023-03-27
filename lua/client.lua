@@ -5,7 +5,6 @@ function M.hit_api(text)
   local cmd = string.format(
     'curl -s -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "auth_key=%s&text=%s&target_lang=JA" %s | tee > ~/Desktop/deepl.log | jq -r ".translations[0].text"',
     vim.env.deepl_nvim_apikey,
-    api_key,
     text,
     url
   )

@@ -35,8 +35,8 @@ function M.show(lines, row, col, text)
     {
       relative = 'cursor',
       width = width,
-      height = height,
-      row = 0,
+      height = height + 1,
+      row = 1,
       col = 0,
       focusable = true,
       style = 'minimal',

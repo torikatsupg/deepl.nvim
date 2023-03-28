@@ -34,7 +34,7 @@ function M.cursor()
       else
         results[i] = vim.fn.strcharpart(line, start_col)
       end
-    elseif i == length then
+    elseif i == #lines then
       results[i] = vim.fn.strcharpart(line, 0, end_col)
     else
       results[i] = line

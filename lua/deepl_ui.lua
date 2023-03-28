@@ -38,12 +38,11 @@ function M.show(lines, row, col, text)
       height = height + 1,
       row = 1,
       col = 0,
-      focusable = true,
+      focusable = false,
       style = 'minimal',
       border = 'rounded',
     }
   )
-  vim.api.nvim_win_set_option(win, 'winblend', 50)
   vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, split_str)
 end
 

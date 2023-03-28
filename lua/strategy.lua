@@ -30,9 +30,9 @@ function M.cursor()
   for i, line in ipairs(lines) do
     if i == 1 then
       if start_row == end_row then
-        results[i] = vim.fn.strcharpart(line, start_col + 1, end_col)
+        results[i] = vim.fn.strcharpart(line, start_col, end_col)
       else
-        results[i] = vim.fn.strcharpart(line, start_col + 1)
+        results[i] = vim.fn.strcharpart(line, start_col)
       end
     elseif i == #lines then
       results[i] = vim.fn.strcharpart(line, 0, end_col)

@@ -20,7 +20,6 @@ end
 
 function M.show(lines, row, col, text)
   local width = M.get_width(lines)
-  local row = M.get_height(lines)
 
   local t = table.concat(vim.split(text, '\n'))
   local split_str = {}
@@ -36,9 +35,9 @@ function M.show(lines, row, col, text)
     {
       relative = 'cursor',
       width = width,
-      height = row,
-      row = height,
-      col = 5,
+      height = height,
+      row = 0,
+      col = 0,
       focusable = true,
       style = 'minimal',
       border = 'rounded',

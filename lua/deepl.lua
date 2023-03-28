@@ -1,6 +1,6 @@
 local M = {}
 
-M.translate = function() 
+M.translate = function()
   local strategy = require 'strategy'
   local ui = require 'deepl_ui'
   local mode = strategy.detect_mode()

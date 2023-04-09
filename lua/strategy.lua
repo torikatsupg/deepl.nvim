@@ -14,7 +14,17 @@ end
 function M.get_position()
   local start_pos = vim.fn.getpos("'<")
   local end_pos = vim.fn.getpos("'>")
-  return start_pos[2], start_pos[3], end_pos[2], end_pos[3]
+  local start_row = start_pos[2]
+  local start_col = start_pos[3]
+  local end_row = end_pos[2]
+  local end_col = end_pos[3]
+
+  if (start_row > end_row) or (start_row == end_row and start_col > end_col) then
+    start_row, end_row = end_row, start_row
+    start_col, end_col = end_col, start_col
+  end
+
+  return start_row, start_col, end_row, end_col
 end
 
 function M.get_selected_lines(start_row, end_row)
@@ -26,14 +36,16 @@ function M.cursor()
   local start_row, start_col, end_row, end_col = M.get_position()
   local lines = M.get_selected_lines(start_row, end_row)
 
+
+  if #lines == 1 then
+    local length = end_col - start_col + 1
+    return { vim.fn.strcharpart(lines[1], start_col - 1, length) }
+  end
+
   local results = {}
   for i, line in ipairs(lines) do
     if i == 1 then
-      if start_row == end_row then
-        results[i] = vim.fn.strcharpart(line, start_col, end_col)
-      else
-        results[i] = vim.fn.strcharpart(line, start_col)
-      end
+      results[i] = vim.fn.strcharpart(line, start_col -1)
     elseif i == #lines then
       results[i] = vim.fn.strcharpart(line, 0, end_col)
     else

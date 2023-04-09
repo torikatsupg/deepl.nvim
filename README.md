@@ -1,4 +1,7 @@
 # Deepl.nvim
+
+![demo](docs/demo.gif)
+
 ## Install
 packer.nvim
 ```lua
@@ -7,16 +10,16 @@ use {
     setup = function()
         vim.env.deepl_nvim_apikey = 'your apikey of freeplan'
         vim.keymap.set('v', '<C-t>', function()
-          vim.env.deepl_nvim_apikey = 'db8a1695-bfa9-3f70-99e4-44897f131e54:fx'
+          vim.env.deepl_nvim_apikey = 'your api key'
           require 'deepl'.translate()
         end, { noremap = true, silent = true })
     end,
     }
 
 ```
-⚠️ Only support deepl freeplan
-⚠️ Only support japanese
-⚠️ You neet to configure keymap on visual mode.
+⚠️ Only support deepl freeplan  
+⚠️ Only support japanese  
+⚠️ You neet to configure keymap on visual mode.  
 
 ## Usage
 1. select words
